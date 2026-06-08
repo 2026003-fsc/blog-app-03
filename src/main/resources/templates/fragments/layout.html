@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>共通ヘッダー</title>
+</head>
+
+<body>
+    <header th:fragment="header">
+        <div>
+            <h1>まいぶろぐ</h1>
+            <form action="/home">
+                <span><input type="text" name="search" placeholder="キーワード検索"></span>
+            </form>
+
+            <a href="/post"><span>投稿</span></a>
+        </div>
+
+
+
+        <p><a href="/">ホーム</a></p>
+        <p><a href="">プロフィール</a></p>
+    </header>
+</body>
+
+</html>
