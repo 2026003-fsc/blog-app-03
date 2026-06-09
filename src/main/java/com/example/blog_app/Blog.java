@@ -1,11 +1,11 @@
 package com.example.blog_app;
 
-public class Post {
+public class Blog {
     private final int id;
     private final String title;
     private final String content;
 
-    public Post(int id, String title, String content){
+    public Blog(int id, String title, String content){
         this.id = id;
         this.title = title;
         this.content = content;

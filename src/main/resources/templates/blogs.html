@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ブログ一覧</title>
+</head>
+<body>
+    <header th:replace="~{fragments/layout :: header}"></header>
+    
+    <table th:if="${not #lists.isEmpty(blogs)}">
+        <tr><th>タイトル</th><th>内容</th></tr>
+        <tr th:each="blog : ${blogs}">
+            <td>
+                <a th:href="@{/blogs/{id}(id=${blog.id})}" th:text="${blog.title}">タイトル</a>
+            </td>
+            <td th:text="${blog.content}">内容</td>
+        </tr>
+    </table>
+    <p th:if="${lists.isEmpty(blogs)}">該当するブログはありません</p>
+
+</body>
+</html>
