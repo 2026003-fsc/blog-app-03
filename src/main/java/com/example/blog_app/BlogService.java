@@ -9,27 +9,35 @@ import org.springframework.stereotype.Service;
 public class BlogService {
     private final BlogRepository blogRepository;
 
-    public BlogService(BlogRepository blogRepository){
+    public BlogService(BlogRepository blogRepository) {
         this.blogRepository = blogRepository;
     }
 
-    public List<Blog> findAll(){
+    public List<Blog> findAll() {
         return blogRepository.findall();
     }
 
     // 検索のビジネスロジック
-    public List<Blog> search(String keyword){
-        if(keyword == null || keyword.isBlank()){
+    public List<Blog> search(String keyword) {
+        if (keyword == null || keyword.isBlank()) {
             return blogRepository.findall();
         }
         return blogRepository.searchByKeyword(keyword);
     }
 
-    public void register(Blog post){
-        blogRepository.register(new Blog(post.getId(), post.getTitle(), post.getContent()));
+    public void register(BlogForm blogForm) {
+        blogRepository.register(blogForm);
     }
 
-    public Optional<Blog> findById(Long id){
+    public List<Blog> findByTitle(BlogForm blogForm) {
+        return blogRepository.findByTitle(blogForm);
+    }
+
+    public Optional<Blog> findById(Long id) {
         return blogRepository.findById(id);
+    }
+
+    public void delete(Long id) {
+        blogRepository.deleteById(id);
     }
 }

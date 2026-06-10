@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{fragments/layout :: header}">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/style.css">
-    <title>投稿</title>
+<head th:replace="~{fragments/layout :: head('ブログの投稿')}">
 </head>
 <body>
+    <header th:replace="~{fragments/layout :: header}"></header>
     <main>
-        <form action="/" method="post">
+        <form th:action="@{/blogs}" method="post">
             <label for="title">タイトル</label><br>
             <input type="text" id="title" name="title"><br>
             <label for="">本文</label><br>
             <input type="textarea" id="content" name="content"> <br>
             <button type="submit">保存</button>
         </form>
+        <!-- <form th:action="@{/blogs/{id}/delete(id=${blog.id})}" method="post">
+            <button type="submit">削除する</button>
+        </form> -->
     </main>
 </body>
 </html>

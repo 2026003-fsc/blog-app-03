@@ -1,30 +1,33 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
 
-<head>
+<head th:fragment="head(title)">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/style.css">
-    <title>共通ヘッダー</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <title th:text="${title}">ブログ管理アプリ</title>
 </head>
 
 <body>
     <header th:fragment="header">
-        <div>
-            <a th:href="@{/blogs}"><h1>まいぶろぐ</h1></a>
-            <form action="/home">
-                <span>
-                    <input type="text" name="keyword" th:value="${keyword}" placeholder="キーワード検索">
-                    <button type="submit">検索</button>
-                </span>
-            </form>
-
-            <a th:href="@{/post}"><span>投稿</span></a>
-        </div>
+            <ul class="top">
+                <li><a th:href="@{/blogs}">
+                        <h1>まいぶろぐ</h1>
+                    </a></li>
+                <li>
+                    <form th:action="@{/blogs}" method="get">
+                        <span>
+                            <input type="text" name="keyword" th:value="${keyword}" placeholder="キーワード検索">
+                            <button type="submit">検索</button>
+                        </span>
+                    </form>
+                </li>
+                <li><a th:href="@{/post}"><span>投稿</span></a></li>
+            </ul>
 
 
         <nav>
-            <p><a href="/">ホーム</a></p>
+            <p><a th:href="@{/blogs}">ホーム</a></p>
             <p><a href="">プロフィール</a></p>
         </nav>
 
