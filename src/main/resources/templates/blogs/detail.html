@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('ブログの詳細')}"></head>
+<body>
+    <header th:replace="~{fragments/layout :: header}"></header>
+    <p th:text="${blog.title}">ポラーノの広場</p>
+    <p th:text="${blog.contents}">こんにちは。</p>
+    <a th:href="@{/blogs/{id}/edit(id=${blog.id})}"><button>この投稿を編集する</button></a>
+    <form th:action="@{/blogs/{id}/delete(id=${blog.id})}" method="post">
+        <button type="submit" onclick="return confirm('本当に削除しますか？')">削除する</button>
+    </form>
+</body>
+</html>

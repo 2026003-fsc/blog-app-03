@@ -8,13 +8,10 @@
         <form th:action="@{/blogs}" method="post">
             <label for="title">タイトル</label><br>
             <input type="text" id="title" name="title"><br>
-            <label for="">本文</label><br>
-            <input type="textarea" id="content" name="content"> <br>
+            <label for="contents">投稿内容</label><br>
+            <textarea id="contents" name="contents" rows="10" cols="50"></textarea> <br>
             <button type="submit">保存</button>
         </form>
-        <!-- <form th:action="@{/blogs/{id}/delete(id=${blog.id})}" method="post">
-            <button type="submit">削除する</button>
-        </form> -->
     </main>
 </body>
 </html>

@@ -2,18 +2,18 @@ package com.example.blog_app;
 
 public class BlogForm {
     private final String title;
-    private final String content;
+    private final String contents;
 
-    public BlogForm(String title, String content){
+    public BlogForm(String title, String contents){
         this.title = title;
-        this.content = content;
+        this.contents = contents;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public String getContent() {
-        return content;
+    public String getContents() {
+        return contents;
     }
 }

@@ -32,12 +32,12 @@ public class BlogController {
         return "blogs";
     }
 
-    @PostMapping("/blogs")
-    public String blog(@ModelAttribute BlogForm blogForm, Model model){
-        blogService.register(blogForm);
-        model.addAttribute("blogs", blogService.findByTitle(blogForm));
-        return "blogs";
-    }
+    // @PostMapping("/blogs")
+    // public String blog(@ModelAttribute BlogForm blogForm, Model model){
+    //     blogService.register(blogForm);
+    //     model.addAttribute("blogs", blogService.findByTitle(blogForm));
+    //     return "blogs";
+    // }
 
     // 各ブログの詳細表示
     @GetMapping("/blogs/{id}")
@@ -47,25 +47,52 @@ public class BlogController {
             return "redirect:/blogs";
         }
         model.addAttribute("blog", blogOpt.get());
-        return "detail";
+        return "blogs/detail";
     }
 
-
-    // 投稿フォーム
-    @GetMapping("/post")
-    public String newBlog(){
-        return "/post";
-    }
-
-    // // 投稿処理
-    // @PostMapping("/post")
-    // public String post(@ModelAttribute BlogForm blogForm, RedirectAttributes redirectAttributes){
-    //     blogService.register(blogForm);
-    //     redirectAttributes.addFlashAttribute("message", "「" + blogForm.getTitle() + "」を投稿しました");
-    //     return "redirect:/blogs";
-    // }
-
-    // 削除処理
     
+    // 投稿フォーム
+    @GetMapping("/blogs/post")
+    public String newBlog(){
+        return "blogs/post";
+    }
+
+    // 投稿処理
+    @PostMapping("/blogs")
+    public String post(@ModelAttribute BlogForm blogForm, RedirectAttributes redirectAttributes){
+        blogService.register(blogForm);
+        redirectAttributes.addFlashAttribute("message", "「" + blogForm.getTitle() + "」を投稿しました");
+        return "redirect:/blogs";
+    }
+
+
+    // 編集フォームの表示
+    @GetMapping("/books/{id}/edit")
+    public String editForm(@PathVariable Long id, Model model){
+        Optional<Blog> blogOpt = blogService.findById(id);
+        if(blogOpt.isEmpty()){
+            return "redirect:/blogs";
+        }
+        Blog blog = blogOpt.get();
+        
+        model.addAttribute("blogForm", new BlogForm(blog.getTitle(), blog.getContents()));
+        model.addAttribute("blogId", id);
+        return "blogs/edit";
+    }
+
+    // ブログの削除
+    @PostMapping("/blogs/{id}/delete")
+    public String delete(@PathVariable Long id, RedirectAttributes redirectAttributes){
+        blogService.delete(id);
+        redirectAttributes.addFlashAttribute("message", "ブログを削除しました");
+        return "redirect:/blogs";
+    }
+
+    // ブログの編集
+    @PostMapping("/blogs/{id}")
+    public String update(@PathVariable Long id, @ModelAttribute BlogForm form){
+        blogService.update(id, form);
+        return "redirect:/blogs";
+    }
 
 }

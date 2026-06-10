@@ -10,28 +10,25 @@
 
 <body>
     <header th:fragment="header">
-            <ul class="top">
-                <li><a th:href="@{/blogs}">
-                        <h1>まいぶろぐ</h1>
-                    </a></li>
-                <li>
-                    <form th:action="@{/blogs}" method="get">
-                        <span>
-                            <input type="text" name="keyword" th:value="${keyword}" placeholder="キーワード検索">
-                            <button type="submit">検索</button>
-                        </span>
-                    </form>
-                </li>
-                <li><a th:href="@{/post}"><span>投稿</span></a></li>
-            </ul>
+        <div class="top">
+            <a th:href="@{/blogs}">
+                <h1>まいぶろぐ</h1>
+            </a>
+            <form th:action="@{/blogs}" method="get">
+                <span>
+                    <input type="text" name="keyword" th:value="${keyword}" placeholder="キーワード検索">
+                    <button type="submit">検索</button>
+                </span>
+            </form>
 
-
-        <nav>
-            <p><a th:href="@{/blogs}">ホーム</a></p>
-            <p><a href="">プロフィール</a></p>
-        </nav>
-
+            <a th:href="@{/blogs/post}"><span>投稿</span></a>
+        </div>
+        <p><a th:href="@{/blogs}">ホーム</a></p>
+        <p><a href="">プロフィール</a></p>
     </header>
 </body>
+<nav>
+
+</nav>
 
 </html>

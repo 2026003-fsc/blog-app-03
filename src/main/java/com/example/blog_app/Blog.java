@@ -3,12 +3,12 @@ package com.example.blog_app;
 public class Blog {
     private final int id;
     private final String title;
-    private final String content;
+    private final String contents;
 
-    public Blog(int id, String title, String content){
+    public Blog(int id, String title, String contents){
         this.id = id;
         this.title = title;
-        this.content = content;
+        this.contents = contents;
     }
 
     public int getId() {
@@ -19,7 +19,7 @@ public class Blog {
         return title;
     }
 
-    public String getContent() {
-        return content;
+    public String getContents() {
+        return contents;
     }
 }

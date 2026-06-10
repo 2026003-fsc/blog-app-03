@@ -1,0 +1,40 @@
+body {
+    margin: 0;
+}
+
+.top {
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e5e5e5;
+    background-color: powderblue;
+    list-style: none;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.top h1 {
+    color: darkblue;
+    font-weight: bolder;
+    text-decoration: none;
+}
+
+main {
+    margin-top: 80px;
+}
+
+.box {
+    border: 2px solid #aaa;
+    background-color: antiquewhite;
+    padding: 2em;
+    border-radius: 15px;
+}
+
+button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: deeppink;
+}

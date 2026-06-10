@@ -29,9 +29,9 @@ public class BlogService {
         blogRepository.register(blogForm);
     }
 
-    public List<Blog> findByTitle(BlogForm blogForm) {
-        return blogRepository.findByTitle(blogForm);
-    }
+    // public List<Blog> findByTitle(BlogForm blogForm) {
+    //     return blogRepository.findByTitle(blogForm);
+    // }
 
     public Optional<Blog> findById(Long id) {
         return blogRepository.findById(id);
@@ -39,5 +39,9 @@ public class BlogService {
 
     public void delete(Long id) {
         blogRepository.deleteById(id);
+    }
+
+    public void update(Long id, BlogForm blogForm){
+        blogRepository.update(id, blogForm.getTitle(), blogForm.getContents());
     }
 }
