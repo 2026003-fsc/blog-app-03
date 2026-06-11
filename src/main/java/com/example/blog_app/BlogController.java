@@ -67,7 +67,7 @@ public class BlogController {
 
 
     // 編集フォームの表示
-    @GetMapping("/books/{id}/edit")
+    @GetMapping("/blogs/{id}/edit")
     public String editForm(@PathVariable Long id, Model model){
         Optional<Blog> blogOpt = blogService.findById(id);
         if(blogOpt.isEmpty()){
@@ -93,6 +93,19 @@ public class BlogController {
     public String update(@PathVariable Long id, @ModelAttribute BlogForm form){
         blogService.update(id, form);
         return "redirect:/blogs";
+    }
+
+
+    // サイト紹介
+    @GetMapping("/about")
+    public String about(){
+        return "about";
+    }
+
+    // プロフィール
+    @GetMapping("/profile")
+    public String introduce(){
+        return "profile";
     }
 
 }

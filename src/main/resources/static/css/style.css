@@ -1,22 +1,15 @@
-body {
-    margin: 0;
-}
-
 .top {
-    height: 80px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid #e5e5e5;
-    background-color: powderblue;
+    background-color: deepskyblue;
     list-style: none;
     width: 100%;
-    margin: 0;
-    padding: 0;
 }
 
 .top h1 {
-    color: darkblue;
+    color: darkgreen;
     font-weight: bolder;
     text-decoration: none;
 }
@@ -37,4 +30,8 @@ button {
     border: none;
     outline: none;
     color: deeppink;
+}
+
+a {
+    text-decoration: none;
 }

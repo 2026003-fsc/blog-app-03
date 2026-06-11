@@ -6,19 +6,12 @@
 <body>
     <header th:replace="~{fragments/layout :: header}"></header>
 
-    <table th:if="${not #lists.isEmpty(blogs)}">
-            <tr>
-                <th>タイトル</th>
-                <th>内容</th>
-            </tr>
-            <tr th:each="blog : ${blogs}" class="box">
-                <td>
-                    <a th:href="@{/blogs/{id}(id=${blog.id})}" th:text="${blog.title}">タイトル</a>
-                </td>
-                <td th:text="${blog.contents}">内容</td>
-            </tr>
+    
 
-    </table>
+    <div th:each="blog : ${blogs}" class="box">
+        <h3><a th:href="@{/blogs/{id}(id=${blog.id})}" th:text="${blog.title}">タイトル</a></h3>
+        <p th:text="${blog.contents}">投稿の内容</p>
+    </div>
     <p th:if="${#lists.isEmpty(blogs)}">該当するブログはありません</p>
 
 </body>
